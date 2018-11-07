@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome, Please register.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/pretty.css')}}" />
+    
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div class="logo1">
+                <img src="{{ url_for('static', filename='img/the-Illuminati.jpg') }}" style = height:100px;>
+            </div>
+            <div class="logo2">
+                <img src="{{ url_for('static', filename='img/the-Illuminati.jpg') }}" style = height:100px;>
+                </div>
+            <h1>Welcome to the Illuminati registration form.</h1>
+            <h4>dishonest answers will be logged and you will be punished.</h4>
+        </div>
+        <div id="body">
+                <h3>Warmest welcomes from the best Secret society Organization in the world, tell your friends.</h3>
+            <div id="warning">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div id="form">
+                <form action='/process' method='post'>
+                    <div>Email: <input type='text' name='email'></div>
+                    <div>First Name: <input type='text' name='firstname'></div>
+                    <div>Last Name: <input type='text' name='lastname'></div>
+                    <div>Password: <input type='text' name='password'></div>
+                    <div>Confirm Password: <input type='text' name='cpassword'></div>
+                    <div>Birth-Date: <input type='text' name='birthdate' value="mm/dd/yyyy"></div>
+                    <button class="button"><span>create user</span></button>
+                    <!-- <input type='submit' value='create user'> -->
+                </form>
+               
+            </div>
+            <a href='/reset'><button class="button"><span>reset form</span></button></a>
+        </div>
+</body>
+</html>
